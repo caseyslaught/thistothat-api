@@ -10,6 +10,9 @@ class HsChapter(BaseStaticModel):
     code = models.CharField(max_length=10)
     description = models.CharField(max_length=255)
     
+    def __str__(self):
+        return f'{self.code}, {self.description}'
+
 
 class HsHeading(BaseStaticModel):
     
@@ -17,6 +20,9 @@ class HsHeading(BaseStaticModel):
 
     code = models.CharField(max_length=10)
     description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'{self.code}, {self.description}'
 
 
 class HsSubheading(BaseStaticModel):
@@ -27,3 +33,5 @@ class HsSubheading(BaseStaticModel):
     code = models.CharField(max_length=10)
     description = models.CharField(max_length=255)
     
+    def __str__(self):
+        return f'{self.code}, {self.description}'

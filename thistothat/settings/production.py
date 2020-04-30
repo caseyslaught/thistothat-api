@@ -11,6 +11,7 @@ STAGE = 'production'
 
 ALLOWED_HOSTS = [
     'data.thistothat.io',
+    'thistothat-production.eba-qms9mvme.eu-central-1.elasticbeanstalk.com'
 ]
 
 CACHES = {

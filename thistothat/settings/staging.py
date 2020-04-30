@@ -12,6 +12,7 @@ STAGE = 'staging'
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'data.staging.thistothat.io',
+    'data.staging.caseyslaught.com',
     'thistothat-staging.eba-qms9mvme.eu-central-1.elasticbeanstalk.com'
 ]
 

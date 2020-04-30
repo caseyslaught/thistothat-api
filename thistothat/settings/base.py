@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'account',
-    'hs',
+    'commodities',
 ]
 
 MIDDLEWARE = [

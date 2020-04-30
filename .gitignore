@@ -5,7 +5,7 @@ notes.txt
 *.db
 
 *.xlsx
-*.csv
+
 
 .vscode/
 venv/

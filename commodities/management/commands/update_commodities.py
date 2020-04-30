@@ -17,7 +17,7 @@ class Command(BaseCommand):
 
         chapter_objs, headings, subheadings = dict(), dict(), dict()
 
-        with open(codes_path, newline='\n') as csvfile:
+        with open(codes_path, newline='\n', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile, delimiter=',', quotechar='\"')
             for row in reader:
                 classification, code, description = row[0].strip(), row[1].strip(), row[2].strip()

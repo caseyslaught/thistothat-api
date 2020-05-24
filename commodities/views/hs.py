@@ -1,14 +1,16 @@
 
-
 from rest_framework import permissions, status, generics, views
 from rest_framework.response import Response
 
+from authentication.backends import LenientApiKeyAuthentication
 from commodities.models import HsChapter, HsHeading, HsSubheading
 from commodities.serializers import hs as serializers
 
 
-
 class GetHsItemView(views.APIView):
+
+    authentication_classes = [LenientApiKeyAuthentication]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, code):
 
@@ -21,7 +23,7 @@ class GetHsItemView(views.APIView):
         else:
             return Response({
                 'error': 'invalid_code',
-                'message': 'Expected a 2, 4 or 6 digit Harmonized System code.'
+                'message': 'Expected a chapter, heading or subheading HS code.'
             }, status=status.HTTP_400_BAD_REQUEST)
 
         try:

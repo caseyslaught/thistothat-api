@@ -7,7 +7,6 @@ AWS_SECRET_ACCESS_KEY = os.environ['THISTOTHAT_AWS_SECRET']
 AWS_ACCOUNT_ID = os.environ['THISTOTHAT_AWS_ACCOUNT_ID']
 AWS_REGION = "eu-central-1"
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SECRET_KEY = os.environ['THISTOTHAT_SECRET']
 
@@ -56,8 +55,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ),
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/minute',
-        'user': '200/minute'
+        'anon': '30/minute',
+        'user': '240/minute'
     },
 
     'DEFAULT_RENDERER_CLASSES': (

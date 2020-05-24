@@ -5,6 +5,8 @@ from sentry_sdk.integrations.logging import ignore_logger
 
 from thistothat.settings.base import *
 
+COGNITO_APP_ID = ""
+COGNITO_USER_POOL_ID = ""
 
 DEBUG = False
 STAGE = 'production'

@@ -1,6 +1,5 @@
 from django.urls import include, path
 
-
 from commodities.views import hs
 
 

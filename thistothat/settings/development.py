@@ -2,6 +2,9 @@
 from thistothat.settings.base import *
 
 
+COGNITO_APP_ID = ""
+COGNITO_USER_POOL_ID = ""
+
 ALLOWED_HOSTS = ['*']
 DEBUG = True
 STAGE = 'development'
@@ -9,7 +12,8 @@ STAGE = 'development'
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/thistothat_cache',
     }
 }
 

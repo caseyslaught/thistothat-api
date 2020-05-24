@@ -45,3 +45,21 @@ class Account(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return f'{self.email}'
 
+
+class ApiKey(models.Model):
+
+    datetime_created = models.DateTimeField(default=get_utc_datetime_now)
+    datetime_updated = models.DateTimeField(null=True)
+    datetime_deleted = models.DateTimeField(null=True)
+    is_active = models.BooleanField(default=True)
+    uid = models.UUIDField(unique=True, editable=False, default=uuid.uuid4)
+
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="api_keys")
+    key = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ['-datetime_created']
+
+    def __str__(self):
+        return f'{self.key}'
+

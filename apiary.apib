@@ -3,14 +3,17 @@ HOST: https://data.thistothat.io/
 
 # ThisToThat
 
-ThisToThat is a simple API that converts things from one format to another.
+ThisToThat is a simple API that converts things from one format to another. First thing
+you will need to do is grab an API key. You can still make requests without one (30/min), 
+however an API key will increase your available request rate (240/sec).
 
 # Group Commodities
 
-## Harmonized System [/commodities/hs/{code}]
+## Harmonized System [/commodities/hs/{code}?api_key={api_key}]
 
 + Parameters
-    + code (number) - chapter, heading or subheading HS code
+    + code (number, required) - chapter, heading or subheading HS code
+    + api_key (string, optional) - your API Key
 
 ### Get Harmonized Commodity Description [GET]
 

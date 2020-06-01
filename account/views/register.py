@@ -28,35 +28,30 @@ class RequestApiKeyView(generics.GenericAPIView):
         except Account.DoesNotExist:
             account = Account.objects.create(email=email)
 
-        # TODO: set some sort of limit for multiple keys per account...
+        if account.api_keys.count() > 0:
+            subject = "Your New API Key"
+            message = "Thanks for coming back! Your new API key will give you programmatic access to datasets like commodities and species. Your old keys are still valid."
+        else:
+            subject = "Your API Key"
+            message = "Thanks for signing up for ThisToThat. You now have programmatic access to a bunch of different datasets like commodities and species!"
 
         api_key = ApiKey.objects.create(account=account, key=str(uuid.uuid4()).replace('-', ''))
 
         with open(os.path.join('account', 'resources', 'api_key.html'), 'r') as f:
             html = f.read()
 
+        html = html.replace('--message--', message)
         html = html.replace('--api_key--', api_key.key)
         html = htmlmin.minify(html)
 
-        text = f'Your API key is: {api_key.key}'
+        text = f'Your ThisToThat API key is: {api_key.key}'
         ses.send_email(
-            'ThisToThat <accounts@thistothat.io>', 
-            [email], 
-            'Your API Key', 
-            text=text, 
+            sender='ThisToThat <accounts@thistothat.io>',
+            recipients=[email], 
+            subject=subject,
+            text=text,
             html=html
         )
-        
+
         return Response(status=status.HTTP_200_OK)
 
-
-# TODO: test this!
-def send_api_key_email(api_key, email):
-    
-    with open(os.path.join('account', 'resources', 'api_key.html'), 'r') as f:
-        html = f.read()
-        html = html.replace('--api_key--', api_key.key)
-
-    text = f'Your API key is: {api_key.key}'
-    ses.send_email('casey@thistothat.io', [email], 'Your API Key', text=text, html=html)
-    

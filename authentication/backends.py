@@ -21,3 +21,5 @@ class LenientApiKeyAuthentication(BaseAuthentication):
             raise exceptions.AuthenticationFailed({
                 "error": "invalid_api_key"
             }, status.HTTP_401_UNAUTHORIZED)
+
+            

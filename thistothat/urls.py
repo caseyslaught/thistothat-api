@@ -8,6 +8,7 @@ urlpatterns = [
    path('account/', include('account.urls')),
    path('commodities/', include('commodities.urls')),
    path('cybersyn1984/', admin.site.urls),
+   path('species/', include('species.urls')),
 
 ]
 

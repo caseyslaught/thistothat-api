@@ -24,6 +24,7 @@ INSTALLED_APPS = [
 
     'account',
     'commodities',
+    'species',
 ]
 
 MIDDLEWARE = [
